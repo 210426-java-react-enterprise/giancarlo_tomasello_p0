@@ -1,6 +1,7 @@
 package com.revature.p0.screens;
 
 import com.revature.p0.daos.UserDAO;
+import com.revature.p0.models.AppUser;
 
 import java.io.BufferedReader;
 
@@ -42,12 +43,14 @@ public class RegisterScreen extends Screen{
             System.out.println("Enter your last name: ");
             lastName = consoleReader.readLine();
 
-            System.out.println("Enter your starting ammount of gold: ");
+            System.out.println("Enter your starting amount of gold: ");
             goldPieces = Double.parseDouble(consoleReader.readLine());
 
-            System.out.println("Enter your startning number of dragon shards: ");
+            System.out.println("Enter your starting number of dragon shards: ");
             dragonShards = Integer.parseInt(consoleReader.readLine());
 
+            AppUser newUser = new AppUser(username, password, email, firstName, lastName, goldPieces, dragonShards);
+            userDAO.saveUserToFile(newUser);
 
         } catch (NumberFormatException nfe){
             System.err.println("You need to provide a correct value for age! Please try again!");

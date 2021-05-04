@@ -75,6 +75,10 @@ public class AppUser {
         this.dragonShards = dragonShards;
     }
 
+    public String toFileString(){
+        return String.format("%s;%s;%s;%s;%s;%.2f;%d", username, password, email, firstName, lastName, goldPieces, dragonShards);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AppUser{");
