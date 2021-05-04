@@ -48,6 +48,7 @@ public class RegisterScreen extends Screen{
             System.out.println("Enter your startning number of dragon shards: ");
             dragonShards = Integer.parseInt(consoleReader.readLine());
 
+
         } catch (NumberFormatException nfe){
             System.err.println("You need to provide a correct value for age! Please try again!");
             this.render();
