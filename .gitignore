@@ -25,3 +25,9 @@ hs_err_pid*
 #IDE Files
 /.idea
 *.iml
+
+#Target
+/target
+
+# Property files
+*.properties
