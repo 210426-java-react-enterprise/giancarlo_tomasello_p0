@@ -6,9 +6,10 @@ public class LinkedList<T> implements List<T>, Queue<T> {
     private Node<T> head;
     private Node<T> tail;
 
+    //Returns the size of the LinkedList
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
