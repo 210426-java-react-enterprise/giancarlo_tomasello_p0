@@ -21,14 +21,13 @@ public class LoginScreen extends Screen{
     @Override
     public void render() {
 
-        try(){
+        try{
             String username;
             String password;
 
             System.out.println("Welcome back Adventurer! Let's find you in our records.");
-            System.out.println("Please provide your chosen username:");
 
-            System.out.print("> ");
+            System.out.println("Can I have your username:");
             username = consoleReader.readLine();
 
             System.out.print("And now your password: ");

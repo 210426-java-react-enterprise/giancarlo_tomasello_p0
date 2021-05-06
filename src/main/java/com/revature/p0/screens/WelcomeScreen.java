@@ -34,6 +34,7 @@ public class WelcomeScreen extends Screen{
             switch (userSelection){
                 case "1":
                     //go to Login
+                    router.navigate("/Login");
                     break;
                 case "2":
                     System.out.println("Greetings new Adventurer. Lets get you set up in our records");
