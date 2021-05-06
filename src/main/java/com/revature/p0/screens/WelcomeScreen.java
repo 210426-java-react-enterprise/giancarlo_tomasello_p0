@@ -1,9 +1,12 @@
 package com.revature.p0.screens;
 
+import com.revature.p0.util.AppState;
 import com.revature.p0.util.ScreenRouter;
 
 import java.io.BufferedReader;
 import java.nio.Buffer;
+
+import static com.revature.p0.Driver.getApp;
 
 public class WelcomeScreen extends Screen{
 
@@ -18,7 +21,7 @@ public class WelcomeScreen extends Screen{
 
     @Override
     public void render() {
-        System.out.println("Welcome Adventure to the world of Fairune's first Tavern & Bank!");
+        System.out.println("Welcome Adventurer to the world of Fayrune's first Tavern & Bank!");
         System.out.println("Are you .....");
         System.out.println("1) A Returning Adventurer?");
         System.out.println("2) A New Adventurer?");
@@ -38,8 +41,8 @@ public class WelcomeScreen extends Screen{
                     //go to register
                     break;
                 case "3":
-                    System.out.println("See you later adventure, and have a magical day!");
-                    //Tell app to stop
+                    System.out.println("See you later adventurer, and have a magical day!");
+                    getApp().setAppRunning(false);
                     break;
 
                 default:
