@@ -1,6 +1,7 @@
 package com.revature.p0.models;
 
 public class AppUser {
+    private int Id;
     private String Username;
     private String Password;
     private String email;
@@ -8,6 +9,10 @@ public class AppUser {
     private String lastName;
     private double goldPieces;
     private int dragonShards;
+
+    public AppUser(){
+
+    }
 
     public AppUser(String username, String password, String email, String firstName, String lastName, double goldPieces, int dragonShards) {
         Username = username;
@@ -18,6 +23,10 @@ public class AppUser {
         this.goldPieces = goldPieces;
         this.dragonShards = dragonShards;
     }
+
+    public int getId() {return Id;}
+
+    public void setId(int id) {Id = id;}
 
     public String getUsername() {
         return Username;
