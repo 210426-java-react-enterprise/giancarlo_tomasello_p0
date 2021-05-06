@@ -12,7 +12,8 @@ public class UserDAO {
 
     }
 
-    public void findUserByUsernameAndPassword(String username, String password){
+    public AppUser findUserByUsernameAndPassword(String username, String password){
 
+        return null;
     }
 }

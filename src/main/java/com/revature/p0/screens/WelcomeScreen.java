@@ -33,7 +33,6 @@ public class WelcomeScreen extends Screen{
 
             switch (userSelection){
                 case "1":
-                    System.out.println("Welcome back Adventurer! Let's find you in our records.");
                     //go to Login
                     break;
                 case "2":
