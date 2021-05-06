@@ -85,7 +85,12 @@ public class LinkedList<T> implements List<T>, Queue<T> {
 
     @Override
     public T peek() {
-        return null;
+        if(head == null){
+            return null;
+        }
+
+        return head.data;
+
     }
 
     private static class Node<T>{

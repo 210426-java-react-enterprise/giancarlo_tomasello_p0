@@ -47,6 +47,24 @@ public class LinkedListTest {
 
     @Test
     public void test_fakeTest(){
-        System.out.println("test is now running.");
+        System.out.println("Fake test is now running.");
     }
+
+    @Test
+    public void test_PeekNonEmpty(){
+        sut.add("test");
+
+        String temp = sut.peek();
+
+        Assert.assertEquals(temp, "test");
+    }
+
+    @Test
+    public void test_PeekEmpty(){
+
+        String temp = sut.peek();
+
+        Assert.assertNull(temp);
+    }
+
 }

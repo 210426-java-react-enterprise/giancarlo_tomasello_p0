@@ -6,9 +6,10 @@ public class TestDriver {
 
     public static void main(String[] args) {
         LinkedListTest tester = new LinkedListTest();
-        //tester.test_fakeTest();
+        tester.test_fakeTest();
+        tester.test_addWithNonNullValue();
         tester.test_addWithNullValue();
-        //tester.test_addWithNonNullValue();
+
 
 
     }
