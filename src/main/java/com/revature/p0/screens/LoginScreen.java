@@ -37,11 +37,17 @@ public class LoginScreen extends Screen{
                 AppUser authenticatedUser = userDAO.findUserByUsernameAndPassword(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login successful!");
+
+                    //Navigate into user menu, pass along authenicatedUser?
                 } else {
                     System.out.println("Login failed!");
+                    System.out.println("Returning to the front desk!");
+                    System.out.println("\n");
                 }
             }else {
                 System.out.println("It looks like you didn't provide any credentials!");
+                System.out.println("Returning to the front desk!");
+                System.out.println("\n");
             }
 
         } catch (Exception e){
