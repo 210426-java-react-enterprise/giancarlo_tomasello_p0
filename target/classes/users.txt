@@ -1,2 +1,0 @@
-myUsername;myPassword;myEmail;myFirst;myLast;11.20;1
-user2;password2;email2;firstName2;lastName32;11.79;1

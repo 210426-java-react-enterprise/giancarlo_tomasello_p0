@@ -1,7 +1,16 @@
 package com.revature.p0;
 
-import com.revature.p0.util.LinkedList;
+import com.revature.p0.util.LinkedListTest;
 
 public class TestDriver {
-    LinkedList tester = new LinkedList();
+
+    public static void main(String[] args) {
+        LinkedListTest tester = new LinkedListTest();
+        //tester.test_fakeTest();
+        tester.test_addWithNullValue();
+        //tester.test_addWithNonNullValue();
+
+
+    }
+
 }

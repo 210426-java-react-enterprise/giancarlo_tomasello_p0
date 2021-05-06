@@ -22,6 +22,7 @@ public class LinkedList<T> implements List<T>, Queue<T> {
     public void add(T data) throws IllegalArgumentException {
 
             if(data == null){
+                System.out.println("throw exception");
                 throw new IllegalArgumentException("This linked list does not accept null values");
             }
 
