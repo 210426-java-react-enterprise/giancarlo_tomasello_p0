@@ -62,7 +62,24 @@ public class LinkedList<T> implements List<T>, Queue<T> {
 
     @Override
     public T poll() {
-        return null;
+
+        if (head == null) {
+            return null;
+        }
+
+        T soughtData = head.data;
+        head = head.nextNode;
+
+        if (head != null) {
+            head.prevNode = null;
+        } else {
+            tail = null;
+        }
+
+        size--;
+
+        return soughtData;
+        
     }
 
     @Override
