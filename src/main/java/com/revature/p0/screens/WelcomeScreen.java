@@ -37,7 +37,7 @@ public class WelcomeScreen extends Screen{
                     //go to Login
                     break;
                 case "2":
-                    System.out.println("Grertings new Adventurer. Lets get you set up in our records");
+                    System.out.println("Greetings new Adventurer. Lets get you set up in our records");
                     //go to register
                     break;
                 case "3":
