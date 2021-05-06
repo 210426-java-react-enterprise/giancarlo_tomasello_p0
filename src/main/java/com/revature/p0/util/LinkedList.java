@@ -1,7 +1,11 @@
 package com.revature.p0.util;
 
 public class LinkedList<T> implements List<T>, Queue<T> {
-    
+
+    private int size;
+    private Node<T> head;
+    private Node<T> tail;
+
     @Override
     public int size() {
         return 0;
@@ -36,4 +40,22 @@ public class LinkedList<T> implements List<T>, Queue<T> {
     public T peek() {
         return null;
     }
+
+    private static class Node<T>{
+
+        T data;
+        Node<T> nextNode;
+        Node<T> prevNode;
+
+        Node(T data){
+            this.data = data;
+        }
+
+        Node(T data, Node<T> nextNode, Node<T> prevNode){
+            this.data = data;
+            this.nextNode = nextNode;
+            this.prevNode = prevNode;
+        }
+    }
+
 }
