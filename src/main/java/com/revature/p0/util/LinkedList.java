@@ -79,7 +79,7 @@ public class LinkedList<T> implements List<T>, Queue<T> {
         size--;
 
         return soughtData;
-        
+
     }
 
     @Override
