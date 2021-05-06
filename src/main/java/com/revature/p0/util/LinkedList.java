@@ -17,9 +17,24 @@ public class LinkedList<T> implements List<T>, Queue<T> {
         return false;
     }
 
+    //Add a new element to the end of the array
     @Override
-    public void add(T data) {
+    public void add(T data) throws IllegalArgumentException {
 
+            if(data == null){
+                throw new IllegalArgumentException("This linked list does not accept null values");
+            }
+
+            Node<T> newNode = new Node<T>(data);
+            if(head == null){
+                tail = head = newNode; //Sets both the head and tail equal to the newly created node
+            } else {
+                tail.nextNode = newNode;
+                newNode.prevNode = tail;
+                tail = newNode;
+            }
+
+            size++;
     }
 
     @Override
