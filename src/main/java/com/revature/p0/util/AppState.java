@@ -30,7 +30,7 @@ public class AppState {
     public boolean isAppRunning(){
         return appRunning;
     }
-    
+
     public void setAppRunning(boolean appRunning){
         this.appRunning = appRunning;
     }
