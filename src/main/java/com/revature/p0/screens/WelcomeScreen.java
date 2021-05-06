@@ -18,6 +18,35 @@ public class WelcomeScreen extends Screen{
 
     @Override
     public void render() {
+        System.out.println("Welcome Adventure to the world of Fairune's first Tavern & Bank!");
+        System.out.println("Are you .....");
+        System.out.println("1) A Returning Adventurer?");
+        System.out.println("2) A New Adventurer?");
+        System.out.println("3) or Taking A Break From Adventuring?");
 
+        try {
+            System.out.println("->");
+            String userSelection = consoleReader.readLine();
+
+            switch (userSelection){
+                case "1":
+                    System.out.println("Welcome back Adventurer! Let's find you in our records.");
+                    //go to Login
+                    break;
+                case "2":
+                    System.out.println("Grertings new Adventurer. Lets get you set up in our records");
+                    //go to register
+                    break;
+                case "3":
+                    System.out.println("See you later adventure, and have a magical day!");
+                    //Tell app to stop
+                    break;
+
+                default:
+                    System.out.println("My apologies, but I do not recognize those provided runes");
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
