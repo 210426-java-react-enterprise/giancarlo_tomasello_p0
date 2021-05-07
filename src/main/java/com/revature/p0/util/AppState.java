@@ -2,6 +2,7 @@ package com.revature.p0.util;
 
 import com.revature.p0.daos.UserDAO;
 import com.revature.p0.screens.LoginScreen;
+import com.revature.p0.screens.ProfileScreen;
 import com.revature.p0.screens.RegisterScreen;
 import com.revature.p0.screens.WelcomeScreen;
 
@@ -25,7 +26,8 @@ public class AppState {
         screenRouter = new ScreenRouter();
         screenRouter.addScreen(new WelcomeScreen(consoleReader, screenRouter))
                 .addScreen(new LoginScreen(consoleReader, screenRouter, userDao))
-                .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao));
+                .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao))
+                .addScreen(new ProfileScreen(consoleReader, screenRouter));
 
         System.out.println("Initialized app and prepared NPCs");
 
