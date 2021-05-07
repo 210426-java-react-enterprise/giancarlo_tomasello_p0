@@ -24,8 +24,8 @@ public class AppState {
 
         screenRouter = new ScreenRouter();
         screenRouter.addScreen(new WelcomeScreen(consoleReader, screenRouter))
-                .addScreen(new LoginScreen(consoleReader, screenRouter))
-                .addScreen(new RegisterScreen(consoleReader, screenRouter));
+                .addScreen(new LoginScreen(consoleReader, screenRouter, userDao))
+                .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao));
 
         System.out.println("Initialized app and prepared NPCs");
 

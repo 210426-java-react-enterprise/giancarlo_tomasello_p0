@@ -8,14 +8,15 @@ import java.io.BufferedReader;
 
 public class LoginScreen extends Screen{
 
-    private UserDAO userDAO = new UserDAO();
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private UserDAO userDAO;
 
-    public LoginScreen(BufferedReader consoleReader, ScreenRouter router){
+    public LoginScreen(BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO){
         super("LoginScreen", "/Login");
         this.consoleReader = consoleReader;
         this.router = router;
+        this.userDAO = userDAO;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class LoginScreen extends Screen{
 
             System.out.println("Welcome back Adventurer! Let's find you in our records.");
 
-            System.out.println("Can I have your username:");
+            System.out.print("Can I have your username:");
             username = consoleReader.readLine();
 
             System.out.print("And now your password: ");

@@ -28,7 +28,7 @@ public class WelcomeScreen extends Screen{
         System.out.println("3) or Taking A Break From Adventuring?");
 
         try {
-            System.out.println("->");
+            System.out.print("->");
             String userSelection = consoleReader.readLine();
 
             switch (userSelection){

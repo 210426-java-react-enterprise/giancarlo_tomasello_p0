@@ -8,14 +8,15 @@ import java.io.BufferedReader;
 
 public class RegisterScreen extends Screen{
 
-    private UserDAO userDAO = new UserDAO();
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private UserDAO userDAO;
 
-    public RegisterScreen(BufferedReader consoleReader, ScreenRouter router){
+    public RegisterScreen(BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO){
         super("RegisterScreen", "/Register");
         this.consoleReader = consoleReader;
         this.router = router;
+        this.userDAO = userDAO;
     }
 
     @Override
