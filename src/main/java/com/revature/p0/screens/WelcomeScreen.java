@@ -36,6 +36,7 @@ public class WelcomeScreen extends Screen{
                     //go to Login
                     router.navigate("/Login");
                     break;
+
                 case "2":
                     //go to register
                     router.navigate("/Register");

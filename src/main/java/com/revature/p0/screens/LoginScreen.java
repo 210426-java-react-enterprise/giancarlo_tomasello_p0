@@ -38,7 +38,8 @@ public class LoginScreen extends Screen{
                 AppUser authenticatedUser = userDAO.findUserByUsernameAndPassword(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login successful!");
-
+                    router.setUser(authenticatedUser);
+                    router.navigate("/Profile");
                     //Navigate into user menu, pass along authenicatedUser?
                 } else {
                     System.out.println("Login failed!");
