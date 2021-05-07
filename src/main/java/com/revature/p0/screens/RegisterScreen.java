@@ -30,8 +30,8 @@ public class RegisterScreen extends Screen{
         int dragonShards;
 
         try{
-            System.out.println("Salutations new adventurer! Let me jot down your information so I can keep a record of" +
-                    "of your accolades.");
+            System.out.println("Salutations new adventurer! Let me jot down your information so I can keep a record" +
+                    " of your accolades.");
             System.out.println("*~~~~~~~~~~~~~~~~*");
 
             System.out.print("Username: ");
