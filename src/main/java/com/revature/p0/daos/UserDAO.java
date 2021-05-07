@@ -19,7 +19,7 @@ public class UserDAO {
         try(Connection conn = ConnectionFactory.getInstance().getConnection()){
             String sqlInsert = "insert into p0.users (username, password, email, first_name, " +
                     "last_name, goldpieces, dragonshards) values (?,?,?,?,?,?,?)";
-            PreparedStatement pstmt = conn.prepareStatement(sqlInsert);
+            PreparedStatement pstmt = conn.prepareStatement(sqlInsert, new String[]{"user_id"});
             pstmt.setString(1, newUser.getUsername());
             pstmt.setString(2, newUser.getPassword());
             pstmt.setString(3, newUser.getEmail());
@@ -27,11 +27,20 @@ public class UserDAO {
             pstmt.setString(5, newUser.getLastName());
             pstmt.setDouble(6, newUser.getGoldPieces());
             pstmt.setInt(7, newUser.getDragonShards());
+            int rowsInserted = pstmt.executeUpdate();
+
+            if(rowsInserted != 0){
+                ResultSet rs = pstmt.getGeneratedKeys();
+                while(rs.next()){
+                    newUser.setId(rs.getInt("user_id"));
+                }
+            }
 
 
         }catch (SQLException e){
             e.printStackTrace();
         }
+        System.out.println("Saved to database");
     }
 
     public AppUser findUserByUsernameAndPassword(String username, String password){

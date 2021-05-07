@@ -37,8 +37,8 @@ public class WelcomeScreen extends Screen{
                     router.navigate("/Login");
                     break;
                 case "2":
-                    System.out.println("Greetings new Adventurer. Lets get you set up in our records");
                     //go to register
+                    router.navigate("/Register");
                     break;
                 case "3":
                     System.out.println("See you later adventurer, and have a magical day!");

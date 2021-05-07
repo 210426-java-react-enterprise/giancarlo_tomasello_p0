@@ -14,6 +14,8 @@ public class RegisterScreen extends Screen{
 
     public RegisterScreen(BufferedReader consoleReader, ScreenRouter router){
         super("RegisterScreen", "/Register");
+        this.consoleReader = consoleReader;
+        this.router = router;
     }
 
     @Override
@@ -32,10 +34,10 @@ public class RegisterScreen extends Screen{
                     "of your accolades.");
             System.out.println("*~~~~~~~~~~~~~~~~*");
 
-            System.out.println("Username: ");
+            System.out.print("Username: ");
             username = consoleReader.readLine();
 
-            System.out.println("Password: ");
+            System.out.print("Password: ");
             password = consoleReader.readLine();
 
             System.out.print("First name: ");
@@ -47,10 +49,10 @@ public class RegisterScreen extends Screen{
             System.out.print("Email: ");
             email = consoleReader.readLine();
 
-            System.out.println("Starting gold: ");
-            goldPieces = Integer.parseInt(consoleReader.readLine());
+            System.out.print("Starting gold: ");
+            goldPieces = Double.parseDouble(consoleReader.readLine());
 
-            System.out.println("Starting DragonShards: ");
+            System.out.print("Starting DragonShards: ");
             dragonShards = Integer.parseInt(consoleReader.readLine());
 
             AppUser newUser = new AppUser(username, password, email, firstName, lastName, goldPieces, dragonShards);
