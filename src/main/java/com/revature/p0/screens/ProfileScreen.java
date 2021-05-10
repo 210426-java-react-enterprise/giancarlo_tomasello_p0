@@ -17,11 +17,13 @@ public class ProfileScreen extends Screen{
     private BufferedReader consoleReader;
     private ScreenRouter router;
     private AppUser user;
+    boolean exitScreen;
 
     public ProfileScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("ProfileScreen", "/Profile");
         this.consoleReader = consoleReader;
         this.router = router;
+        exitScreen = false;
     }
 
     public void setUser (AppUser user){
@@ -40,35 +42,41 @@ public class ProfileScreen extends Screen{
         System.out.println("3) I want to hear about by past adventures");
         System.out.println("4) I wanna go find more gold");
         System.out.println("5) I wanna go to the shop");
+        System.out.println("6) I'm done for the day");
+        while(!exitScreen) {
+            try {
 
-        try {
-            System.out.print("->");
-            String userSelection = consoleReader.readLine();
+                System.out.print("->");
+                String userSelection = consoleReader.readLine();
 
-            switch (userSelection){
-                case "1":
-                    printValueOfAccount();
-                    //print out gold totals
-                    break;
-                case "2":
-                    //Display corresponding items from item table
-                    break;
-                case "3":
-                    //Display previous transactions
-                    break;
-                case "4":
-                    //Navigate to minigame screen
-                    router.navigate("/Minigame");
+                switch (userSelection) {
+                    case "1":
+                        printValueOfAccount();
+                        //print out gold totals
+                        break;
+                    case "2":
+                        //Display corresponding items from item table
+                        break;
+                    case "3":
+                        //Display previous transactions
+                        break;
+                    case "4":
+                        //Navigate to minigame screen
+                        router.navigate("/Minigame");
 
-                    break;
-                case "5":
-                    //shop
-                    break;
-                default:
-                    System.out.println("My apologies, but I don't recognize that runic symbol");
+                        break;
+                    case "5":
+                        //shop
+                        break;
+                    case "6":
+                        exitScreen = true;
+                    default:
+                        System.out.println("My apologies, but I don't recognize that runic symbol");
+                        exitScreen = true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e){
-            e.printStackTrace();
         }
     }
 
