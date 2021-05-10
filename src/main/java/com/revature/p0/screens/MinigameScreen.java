@@ -1,5 +1,6 @@
 package com.revature.p0.screens;
 
+import com.revature.p0.daos.UserDAO;
 import com.revature.p0.models.AppUser;
 import com.revature.p0.util.ScreenRouter;
 
@@ -10,13 +11,15 @@ public class MinigameScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private UserDAO userDAO;
     AppUser user;
     double prizeMoney;
 
-    public MinigameScreen(BufferedReader consoleReader, ScreenRouter router){
+    public MinigameScreen(BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO){
         super("MinigameScreen", "/Minigame");
         this.consoleReader = consoleReader;
         this.router = router;
+        this.userDAO = userDAO;
     }
 
     @Override
@@ -26,6 +29,10 @@ public class MinigameScreen extends Screen{
         user = router.getUser();
         user.setGoldPieces(user.getGoldPieces()+prizeMoney);
         System.out.println("New gold total is: " + user.getGoldPieces());
+
+        double updateAmount = user.getGoldPieces()+prizeMoney;
+
+        userDAO.updateValueOfAccount("goldpieces",updateAmount, user.getId(), 1 );
     }
 
     public double minigame_PickAChest(){
@@ -61,4 +68,5 @@ public class MinigameScreen extends Screen{
                 return 0;
         }
     }
+
 }
