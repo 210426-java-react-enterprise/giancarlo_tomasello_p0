@@ -1,5 +1,6 @@
 package com.revature.p0.screens;
 
+import com.revature.p0.daos.UserDAO;
 import com.revature.p0.models.AppUser;
 import com.revature.p0.util.ScreenRouter;
 
@@ -10,22 +11,32 @@ public class MinigameScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private UserDAO userDAO;
     AppUser user;
     double prizeMoney;
 
-    public MinigameScreen(BufferedReader consoleReader, ScreenRouter router){
+    public MinigameScreen(BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO){
         super("MinigameScreen", "/Minigame");
         this.consoleReader = consoleReader;
         this.router = router;
+        this.userDAO = userDAO;
     }
 
     @Override
     public void render() {
+
+        //run minigame
        prizeMoney = minigame_PickAChest();
+
+       //Add money to account
        //TODO: Prompt users (who have multiple accounts) and ask what account to place money into
         user = router.getUser();
-        user.setGoldPieces(user.getGoldPieces()+prizeMoney);
-        System.out.println("New gold total is: " + user.getGoldPieces());
+//        user.setGoldPieces(user.getGoldPieces()+prizeMoney);
+//        System.out.println("New gold total is: " + user.getGoldPieces());
+
+        double updateAmount = user.getGoldPieces()+prizeMoney;
+
+        userDAO.updateValueOfAccount("goldpieces",updateAmount, user.getId(), 1 );
     }
 
     public double minigame_PickAChest(){
@@ -45,20 +56,22 @@ public class MinigameScreen extends Screen{
 
         switch (playerChoice){
             case 1:
-                System.out.println("You opened chest 1 and got " +  chest1 + " gold pieces");
+                System.out.printf("You opened chest 1 and got %.2f gold pieces\n", Math.round(chest1 * 100.0)/100.0);
+                //System.out.println("You opened chest 1 and got " +  Math.round(chest1 * 100.0)/100.0 + " gold pieces");
                 return chest1;
 
 
             case 2:
-                System.out.println("You opened chest 2 and got " +  chest2 + " gold pieces");
+                System.out.printf("You opened chest 1 and got %.2f gold pieces\n", Math.round(chest2 * 100.0)/100.0);
                 return chest2;
 
             case 3:
-                System.out.println("You opened chest 3 and got " +  chest3 + " gold pieces");
+                System.out.printf("You opened chest 1 and got %.2f gold pieces\n", Math.round(chest3 * 100.0)/100.0);
                 return chest3;
 
             default:
                 return 0;
         }
     }
+
 }

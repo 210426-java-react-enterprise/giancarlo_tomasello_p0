@@ -73,4 +73,18 @@ public class UserDAO {
         return user;
     }
 
+    public void updateValueOfAccount(String currencyType, double newValue, int userID, int accountID){
+        try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+            String sql = "update p0.users set goldpieces = ? where user_id = ?"; //later add account_id ??
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, currencyType);
+            pstmt.setDouble(1, newValue);
+            pstmt.setInt(2, userID);
+
+            pstmt.executeUpdate();
+            pstmt.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
