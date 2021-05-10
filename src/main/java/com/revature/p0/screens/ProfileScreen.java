@@ -5,10 +5,12 @@ import com.revature.p0.util.ConnectionFactory;
 import com.revature.p0.util.ScreenRouter;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class ProfileScreen extends Screen{
 
@@ -35,8 +37,9 @@ public class ProfileScreen extends Screen{
         System.out.println("How can we Help you today?");
         System.out.println("1) I want to see how much treasure I have");
         System.out.println("2) I want to see all my items");
-        System.out.println("3) I want to hear about by past adventures.");
+        System.out.println("3) I want to hear about by past adventures");
         System.out.println("4) I wanna go find more gold");
+        System.out.println("5) I wanna go to the shop");
 
         try {
             System.out.print("->");
@@ -55,6 +58,10 @@ public class ProfileScreen extends Screen{
                     break;
                 case "4":
                     //Navigate to minigame screen
+                    //minigame_PickAChest();
+                    break;
+                case "5":
+                    //shop
                     break;
                 default:
                     System.out.println("My apologies, but I don't recognize that runic symbol");
@@ -81,4 +88,6 @@ public class ProfileScreen extends Screen{
         }
 
     }
+
+
 }
