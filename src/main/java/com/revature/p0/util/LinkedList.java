@@ -44,7 +44,7 @@ public class LinkedList<T> implements List<T>, Queue<T> {
     }
 
     @Override
-    public T get(int index) {
+    public T get(int index) throws IllegalArgumentException{
 
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("The provided index would be out of bounds.");

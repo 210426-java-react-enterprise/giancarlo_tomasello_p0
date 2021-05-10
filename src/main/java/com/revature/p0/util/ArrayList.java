@@ -49,7 +49,11 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public T get(int index) {
+    public T get(int index) throws IllegalArgumentException {
+        if(index < 0 || index >= elements.length){
+            throw new IllegalArgumentException("This provided index would be out of bounds");
+        }
+        
         return elements[index];
     }
 }
