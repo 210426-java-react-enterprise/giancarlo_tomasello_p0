@@ -58,7 +58,8 @@ public class ProfileScreen extends Screen{
                     break;
                 case "4":
                     //Navigate to minigame screen
-                    //minigame_PickAChest();
+                    router.navigate("/Minigame");
+
                     break;
                 case "5":
                     //shop

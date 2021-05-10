@@ -13,7 +13,7 @@ public class MinigameScreen extends Screen{
     AppUser user;
     double prizeMoney;
 
-    MinigameScreen(BufferedReader consoleReader, ScreenRouter router){
+    public MinigameScreen(BufferedReader consoleReader, ScreenRouter router){
         super("MinigameScreen", "/Minigame");
         this.consoleReader = consoleReader;
         this.router = router;

@@ -1,10 +1,7 @@
 package com.revature.p0.util;
 
 import com.revature.p0.daos.UserDAO;
-import com.revature.p0.screens.LoginScreen;
-import com.revature.p0.screens.ProfileScreen;
-import com.revature.p0.screens.RegisterScreen;
-import com.revature.p0.screens.WelcomeScreen;
+import com.revature.p0.screens.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -27,7 +24,8 @@ public class AppState {
         screenRouter.addScreen(new WelcomeScreen(consoleReader, screenRouter))
                 .addScreen(new LoginScreen(consoleReader, screenRouter, userDao))
                 .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao))
-                .addScreen(new ProfileScreen(consoleReader, screenRouter));
+                .addScreen(new ProfileScreen(consoleReader, screenRouter))
+                .addScreen(new MinigameScreen(consoleReader, screenRouter));
 
         System.out.println("Initialized app and prepared NPCs");
 
