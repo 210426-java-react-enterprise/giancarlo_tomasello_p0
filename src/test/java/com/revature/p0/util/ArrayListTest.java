@@ -73,4 +73,47 @@ public class ArrayListTest {
         String temp = sut.get(5);
 
     }
+    //requires a data t
+    @Test (expected = IllegalArgumentException.class)
+    public void test_containsWithNull(){
+
+        sut.add("Cat");
+        sut.add("Dog");
+
+        sut.contains(null);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_containsEmptyArraylist(){
+
+        sut.contains("Dog");
+    }
+
+    @Test
+    public void test_containsNonNull(){
+
+        boolean expected = true;
+
+        sut.add("Cat");
+        sut.add("Dog");
+        sut.add("Fish");
+
+        boolean result = sut.contains("Dog");
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void test_containsNonNullMissingElement(){
+
+        boolean expected = false;
+
+        sut.add("Cat");
+        sut.add("Dog");
+        sut.add("Fish");
+
+        boolean result = sut.contains("Dragon");
+
+        Assert.assertEquals(expected, result);
+    }
 }

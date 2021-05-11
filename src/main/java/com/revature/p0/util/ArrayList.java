@@ -23,7 +23,7 @@ public class ArrayList<T> implements List<T> {
     public boolean contains(T data) throws IllegalArgumentException{
         if(data == null){
             throw new IllegalArgumentException("This Array List does not accept null values");
-        } else if (size >= 0){
+        } else if (size <= 0){
             throw new IllegalArgumentException("Calling Contains on an empty ArrayList");
         }
 
