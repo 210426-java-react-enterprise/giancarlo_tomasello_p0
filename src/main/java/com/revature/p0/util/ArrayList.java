@@ -32,7 +32,7 @@ public class ArrayList<T> implements List<T> {
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -55,9 +55,33 @@ public class ArrayList<T> implements List<T> {
         }
     }
 
+    //Remove data
     @Override
     public T remove(T data) {
-        return null;
+
+        int emptyIndex = -1;
+        for (int i = 0; i < size; i++) {
+            if(elements[i] == data){
+                emptyIndex = i;
+                break;
+            }
+        }
+
+        //return null if nothing was removed
+        if(emptyIndex == -1){
+            return null;
+        }
+
+        for(int i = emptyIndex; i < size-1; i++){
+            elements[i] = elements[i+1];
+        }
+
+        //Return the data to tell it was removed
+        return data;
+    }
+
+    public void remove(int index){
+
     }
 
     @Override
