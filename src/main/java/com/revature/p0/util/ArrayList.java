@@ -50,10 +50,10 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) throws IllegalArgumentException {
-        if(index < 0 || index >= elements.length){
+        if(index < 0 || index >= size){
             throw new IllegalArgumentException("This provided index would be out of bounds");
         }
-        
+
         return elements[index];
     }
 }

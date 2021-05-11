@@ -55,4 +55,22 @@ public class ArrayListTest {
         Assert.assertEquals(expectedSize, actualSize);
     }
 
+    @Test
+    public void test_getInRange(){
+
+        sut.add("Data");
+
+        String temp = sut.get(0);
+
+        Assert.assertEquals(temp, "Data");
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_getOutOfRange(){
+
+        sut.add("Data");
+
+        String temp = sut.get(5);
+
+    }
 }
