@@ -57,7 +57,11 @@ public class ArrayList<T> implements List<T> {
 
     //Remove data
     @Override
-    public T remove(T data) {
+    public T remove(T data) throws IllegalArgumentException{
+
+        if(data == null){
+            throw new IllegalArgumentException("This Array List does not accept null values");
+        }
 
         int emptyIndex = -1;
         for (int i = 0; i < size; i++) {
@@ -76,12 +80,21 @@ public class ArrayList<T> implements List<T> {
             elements[i] = elements[i+1];
         }
 
+        size--;
         //Return the data to tell it was removed
         return data;
     }
 
-    public void remove(int index){
+    public boolean remove(int index) throws IllegalArgumentException{
+        if(index < 0 || index >= size){
+            throw new IllegalArgumentException("This provided index would be out of bounds");
+        }
 
+        for (int i = index; i < size-1; i++) {
+            elements[i] = elements[i+1];
+        }
+        size--;
+        return true;
     }
 
     @Override
