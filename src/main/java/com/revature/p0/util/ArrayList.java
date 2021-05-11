@@ -1,8 +1,9 @@
 package com.revature.p0.util;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
-public class ArrayList<T> implements List<T> {
+public class ArrayList<T> implements List<T>{
 
     private int size = 0;
     private int threshold = 8;
@@ -101,4 +102,5 @@ public class ArrayList<T> implements List<T> {
 
         return elements[index];
     }
+
 }

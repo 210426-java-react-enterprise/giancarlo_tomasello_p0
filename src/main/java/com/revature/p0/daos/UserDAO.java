@@ -124,6 +124,25 @@ public class UserDAO {
                 }
             }
 
+            for (int i = 0; i < item_ids.size(); i++) {
+                sql = "select * from p0.itemlist where item_id = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, item_ids.get(i));
+
+                rs = pstmt.executeQuery();
+
+                while (rs.next()){
+                    Item temp = new Item();
+                    temp.setId(rs.getInt("item_id"));
+                    temp.setName(rs.getString("name"));
+                    temp.setDescription(rs.getString("description"));
+                    temp.setRarity(rs.getString("rarity"));
+                    temp.setValue(rs.getDouble("value"));
+
+                    System.out.println(temp.toString());
+                }
+            }
+
 
         }catch (SQLException e){
             e.printStackTrace();
