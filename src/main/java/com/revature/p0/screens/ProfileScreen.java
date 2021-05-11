@@ -36,6 +36,7 @@ public class ProfileScreen extends Screen{
     public void render() {
         exitScreen = false;
         setUser(router.getUser());
+        System.out.println(user.getBackpack().size());
 
         System.out.println("Welcome back " + user.getFirstName() + " " + user.getLastName() + "!");
         System.out.println("How can we Help you today?");
@@ -66,7 +67,6 @@ public class ProfileScreen extends Screen{
                     case "4":
                         //Navigate to minigame screen
                         router.navigate("/Minigame");
-
                         break;
                     case "5":
                         //shop
@@ -98,6 +98,10 @@ public class ProfileScreen extends Screen{
         } catch (SQLException e){
             e.printStackTrace();
         }
+
+    }
+
+    public void getBackpackArray(){
 
     }
 

@@ -93,14 +93,24 @@ public class AppUser {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AppUser{");
-        sb.append("Username='").append(Username).append('\'');
+        sb.append("Id=").append(Id);
+        sb.append(", Username='").append(Username).append('\'');
         sb.append(", Password='").append(Password).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", goldPieces=").append(goldPieces);
         sb.append(", dragonShards=").append(dragonShards);
+        sb.append(", backpack=").append(backpack);
         sb.append('}');
         return sb.toString();
+    }
+
+    public ArrayList<Item> getBackpack() {
+        return backpack;
+    }
+
+    public void setBackpack(ArrayList<Item> backpack) {
+        this.backpack = backpack;
     }
 }

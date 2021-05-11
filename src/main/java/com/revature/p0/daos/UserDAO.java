@@ -1,6 +1,8 @@
 package com.revature.p0.daos;
 
 import com.revature.p0.models.AppUser;
+import com.revature.p0.models.Item;
+import com.revature.p0.util.ArrayList;
 import com.revature.p0.util.ConnectionFactory;
 
 import java.sql.Connection;
@@ -70,6 +72,8 @@ public class UserDAO {
     public AppUser findUserByUsernameAndPassword(String username, String password){
 
         AppUser user = null;
+        int account_id = 0;
+        ArrayList<Integer> item_ids= new ArrayList<>();
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()){
             String sql = "select * from p0.users where username = ? and password = ?";
@@ -96,12 +100,30 @@ public class UserDAO {
                 pstmt.setInt(1, user.getId());
 
                 rs = pstmt.executeQuery();
+
+
                 while (rs.next()){
                     user.setGoldPieces(rs.getDouble("goldpieces"));
                     user.setDragonShards(rs.getInt("dragonshards"));
+                    account_id = rs.getInt("account_id");
                 }
 
             }
+
+            if(account_id > 0){
+                sql = "select * from p0.backpack where account_id = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, account_id);
+
+                rs = pstmt.executeQuery();
+
+                while (rs.next()){
+                    int item_id = rs.getInt("item_id");
+                    item_ids.add(item_id);
+                    System.out.println(item_id);
+                }
+            }
+
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -111,6 +133,8 @@ public class UserDAO {
 
         return user;
     }
+
+
 
     public void printValueOfAccount(AppUser user){
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
