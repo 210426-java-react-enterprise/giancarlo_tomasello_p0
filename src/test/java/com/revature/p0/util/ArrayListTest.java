@@ -116,4 +116,41 @@ public class ArrayListTest {
 
         Assert.assertEquals(expected, result);
     }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_removeNull(){
+
+        sut.add("Cat");
+
+        sut.remove(null);
+    }
+
+    @Test
+    public void test_removeValue(){
+
+        String expected = "Cat";
+
+        sut.add("Cat");
+        sut.add("Dog");
+        sut.add("Fish");
+
+        String actual = sut.remove("Cat");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test_removeMissingValue(){
+
+
+        sut.add("Cat");
+        sut.add("Dog");
+        sut.add("Fish");
+
+        String actual = sut.remove("Dragon");
+
+        Assert.assertNull(actual);
+    }
+    
+
 }
