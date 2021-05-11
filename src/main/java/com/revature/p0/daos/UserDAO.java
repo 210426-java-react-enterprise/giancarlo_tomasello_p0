@@ -74,12 +74,27 @@ public class UserDAO {
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));
-                user.setGoldPieces(rs.getDouble("goldpieces"));
-                user.setDragonShards(rs.getInt("dragonshards"));
+
             }
+
+            if(user!=null){
+                sql = "select * from p0.accounts where user_id = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, user.getId());
+
+                rs = pstmt.executeQuery();
+                while (rs.next()){
+                    user.setGoldPieces(rs.getDouble("goldpieces"));
+                    user.setDragonShards(rs.getInt("dragonshards"));
+                }
+
+            }
+
         }catch (SQLException e){
             e.printStackTrace();
         }
+
+
 
         return user;
     }
