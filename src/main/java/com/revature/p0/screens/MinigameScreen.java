@@ -31,10 +31,9 @@ public class MinigameScreen extends Screen{
        //Add money to account
        //TODO: Prompt users (who have multiple accounts) and ask what account to place money into
         user = router.getUser();
-//        user.setGoldPieces(user.getGoldPieces()+prizeMoney);
-//        System.out.println("New gold total is: " + user.getGoldPieces());
-
         double updateAmount = user.getGoldPieces()+prizeMoney;
+        user.setGoldPieces(updateAmount);
+
 
         userDAO.updateValueOfAccount("goldpieces",updateAmount, user.getId(), 1 );
     }

@@ -26,7 +26,6 @@ public class ProfileScreen extends Screen{
         this.consoleReader = consoleReader;
         this.router = router;
         this.userDAO = userDAO;
-        exitScreen = false;
     }
 
     public void setUser (AppUser user){
@@ -35,7 +34,7 @@ public class ProfileScreen extends Screen{
 
     @Override
     public void render() {
-
+        exitScreen = false;
         setUser(router.getUser());
 
         System.out.println("Welcome back " + user.getFirstName() + " " + user.getLastName() + "!");
@@ -54,6 +53,7 @@ public class ProfileScreen extends Screen{
 
                 switch (userSelection) {
                     case "1":
+                        setUser(router.getUser());
                         userDAO.printValueOfAccount(user);
                         //print out gold totals
                         break;
