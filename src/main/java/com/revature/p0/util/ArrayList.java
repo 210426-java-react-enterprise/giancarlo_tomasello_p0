@@ -4,15 +4,11 @@ import java.lang.reflect.Array;
 
 public class ArrayList<T> implements List<T> {
 
-    private int size;
-    private int threshold;
-    private T[] elements;
+    private int size = 0;
+    private int threshold = 8;
+    private T[] elements  = (T[])new Object[10];
 
-    ArrayList(){
-        elements = (T[])new Object[10];
-        threshold = 8;
-        size = 0;
-    }
+
 
     @Override
     public int size() {

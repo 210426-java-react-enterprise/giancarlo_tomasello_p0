@@ -1,5 +1,7 @@
 package com.revature.p0.models;
 
+import com.revature.p0.util.ArrayList;
+
 public class AppUser {
     private int Id;
     private String Username;
@@ -9,12 +11,14 @@ public class AppUser {
     private String lastName;
     private double goldPieces;
     private int dragonShards;
+    private ArrayList<Item> backpack;
 
     public AppUser(){
 
     }
 
-    public AppUser(String username, String password, String email, String firstName, String lastName, double goldPieces, int dragonShards) {
+    public AppUser(String username, String password, String email, String firstName, String lastName, double goldPieces,
+                   int dragonShards, ArrayList<Item> backpack) {
         Username = username;
         Password = password;
         this.email = email;
@@ -22,6 +26,7 @@ public class AppUser {
         this.lastName = lastName;
         this.goldPieces = goldPieces;
         this.dragonShards = dragonShards;
+        this.backpack = backpack;
     }
 
     public int getId() {return Id;}

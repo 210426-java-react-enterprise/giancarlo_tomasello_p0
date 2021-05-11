@@ -2,6 +2,9 @@ package com.revature.p0.screens;
 
 import com.revature.p0.daos.UserDAO;
 import com.revature.p0.models.AppUser;
+import com.revature.p0.models.Item;
+import com.revature.p0.util.ArrayList;
+import com.revature.p0.util.LinkedList;
 import com.revature.p0.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -29,6 +32,7 @@ public class RegisterScreen extends Screen{
         String email;
         double goldPieces;
         int dragonShards;
+        ArrayList<Item> backpack = new ArrayList<>();
 
         try{
             System.out.println("Salutations new adventurer! Let me jot down your information so I can keep a record" +
@@ -56,7 +60,8 @@ public class RegisterScreen extends Screen{
             System.out.print("Starting DragonShards: ");
             dragonShards = Integer.parseInt(consoleReader.readLine());
 
-            AppUser newUser = new AppUser(username, password, email, firstName, lastName, goldPieces, dragonShards);
+            AppUser newUser = new AppUser(username, password, email, firstName, lastName, goldPieces, dragonShards,
+                    backpack);
             userDAO.save(newUser);
 
         } catch (Exception e){

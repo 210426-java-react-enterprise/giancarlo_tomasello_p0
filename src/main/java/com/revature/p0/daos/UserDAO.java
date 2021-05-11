@@ -38,15 +38,28 @@ public class UserDAO {
 
             //create an associated account in the account table
             sqlInsert = "insert into p0.accounts (user_id, goldpieces, dragonshards) values (?,?,?)";
-            pstmt = conn.prepareStatement(sqlInsert, new String[]{"user_id"});
+            pstmt = conn.prepareStatement(sqlInsert, new String[]{"account_id"});
             pstmt.setInt(1, newUser.getId());
             pstmt.setDouble(2, newUser.getGoldPieces());
             pstmt.setInt(3, newUser.getDragonShards());
 
             rowsInserted = pstmt.executeUpdate();
+
+            int account_id = 0;
+
+            if(rowsInserted != 0){
+                ResultSet rs = pstmt.getGeneratedKeys();
+                while(rs.next()){
+                   account_id = rs.getInt("account_id");
+                }
+            }
+
+            //Create a "backpack" for the account and insert an starting item
+            sqlInsert = "insert into p0.backpack (account_id, item_id) values (?, 1)";
+            pstmt = conn.prepareStatement(sqlInsert, new String[]{"item_id"});
+            pstmt.setInt(1, account_id);
+            pstmt.executeUpdate();
             pstmt.close();
-
-
 
         }catch (SQLException e){
             e.printStackTrace();
