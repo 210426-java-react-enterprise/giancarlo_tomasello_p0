@@ -171,5 +171,25 @@ public class ArrayListTest {
 
         Assert.assertEquals(expected, actual);
     }
-    
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_getWithOutOfBounds(){
+        sut.add("Cat");
+
+        sut.get(10);
+    }
+
+    @Test
+    public void test_getWithIndex(){
+        String expected = "Dog";
+
+        sut.add("Cat");
+        sut.add("Dog");
+        sut.add("Fish");
+
+        
+        String actual = sut.get(1);
+
+        Assert.assertEquals(expected, actual);
+    }
 }
