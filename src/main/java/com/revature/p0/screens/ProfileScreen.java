@@ -1,5 +1,6 @@
 package com.revature.p0.screens;
 
+import com.revature.p0.daos.UserDAO;
 import com.revature.p0.models.AppUser;
 import com.revature.p0.util.ConnectionFactory;
 import com.revature.p0.util.ScreenRouter;
@@ -16,13 +17,15 @@ public class ProfileScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private UserDAO userDAO;
     private AppUser user;
     boolean exitScreen;
 
-    public ProfileScreen(BufferedReader consoleReader, ScreenRouter router) {
+    public ProfileScreen(BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO) {
         super("ProfileScreen", "/Profile");
         this.consoleReader = consoleReader;
         this.router = router;
+        this.userDAO = userDAO;
         exitScreen = false;
     }
 
@@ -51,7 +54,7 @@ public class ProfileScreen extends Screen{
 
                 switch (userSelection) {
                     case "1":
-                        printValueOfAccount();
+                        userDAO.printValueOfAccount(user);
                         //print out gold totals
                         break;
                     case "2":

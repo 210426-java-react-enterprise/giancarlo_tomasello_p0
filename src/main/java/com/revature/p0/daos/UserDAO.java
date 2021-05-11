@@ -99,6 +99,24 @@ public class UserDAO {
         return user;
     }
 
+    public void printValueOfAccount(AppUser user){
+        try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
+            String sql = "select goldpieces, dragonshards from p0.accounts where user_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, user.getId());
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                System.out.println("You still have " + rs.getDouble("goldpieces") + " gold pieces and " +
+                        rs.getInt("dragonshards") + " Dragon Shards in your account.");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
     public void updateValueOfAccount(String currencyType, double newValue, int userID, int accountID){
         try(Connection conn = ConnectionFactory.getInstance().getConnection()){
             String sql = "update p0.users set goldpieces = ? where user_id = ?"; //later add account_id ??
