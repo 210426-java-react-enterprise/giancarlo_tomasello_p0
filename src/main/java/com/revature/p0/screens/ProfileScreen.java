@@ -2,6 +2,8 @@ package com.revature.p0.screens;
 
 import com.revature.p0.daos.UserDAO;
 import com.revature.p0.models.AppUser;
+import com.revature.p0.models.Item;
+import com.revature.p0.util.ArrayList;
 import com.revature.p0.util.ConnectionFactory;
 import com.revature.p0.util.ScreenRouter;
 
@@ -60,6 +62,7 @@ public class ProfileScreen extends Screen{
                         break;
                     case "2":
                         //Display corresponding items from item table
+                        printBackpackArray();
                         break;
                     case "3":
                         //Display previous transactions
@@ -101,8 +104,14 @@ public class ProfileScreen extends Screen{
 
     }
 
-    public void getBackpackArray(){
-
+    public void printBackpackArray(){
+        ArrayList<Item> backpack = user.getBackpack();
+        System.out.println("Let's see what you have.");
+        for (int i = 0; i < backpack.size(); i++) {
+            System.out.printf("%d] %s | %s | %s | %s Gp \n",
+                    i + 1, backpack.get(i).getName(), backpack.get(i).getDescription(),
+                    backpack.get(i).getRarity(), backpack.get(i).getValue());
+        }
     }
 
 

@@ -144,6 +144,7 @@ public class UserDAO {
                 
             }
 
+            user.setBackpack(userItems);
 
         }catch (SQLException e){
             e.printStackTrace();
