@@ -151,6 +151,25 @@ public class ArrayListTest {
 
         Assert.assertNull(actual);
     }
-    
 
+    @Test (expected = IllegalArgumentException.class)
+    public void test_RemoveIndexOutOfBounds(){
+        sut.add("Cat");
+
+        sut.remove(10);
+    }
+
+    @Test
+    public void test_removeWithIndex(){
+        boolean expected = true;
+
+        sut.add("Cat");
+        sut.add("Dog");
+        sut.add("Fish");
+
+        boolean actual = sut.remove(0);
+
+        Assert.assertEquals(expected, actual);
+    }
+    
 }
