@@ -17,16 +17,16 @@ public class UserDAO {
     public void save(AppUser newUser){
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()){
-            String sqlInsert = "insert into p0.users (username, password, email, first_name, " +
-                    "last_name, goldpieces, dragonshards) values (?,?,?,?,?,?,?)";
+            //Insert into users table
+            String sqlInsert = "insert into p0.users (username, password, email, first_name, last_name) " +
+                    "values (?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sqlInsert, new String[]{"user_id"});
             pstmt.setString(1, newUser.getUsername());
             pstmt.setString(2, newUser.getPassword());
             pstmt.setString(3, newUser.getEmail());
             pstmt.setString(4, newUser.getFirstName());
             pstmt.setString(5, newUser.getLastName());
-            pstmt.setDouble(6, newUser.getGoldPieces());
-            pstmt.setInt(7, newUser.getDragonShards());
+
             int rowsInserted = pstmt.executeUpdate();
 
             if(rowsInserted != 0){
@@ -35,6 +35,17 @@ public class UserDAO {
                     newUser.setId(rs.getInt("user_id"));
                 }
             }
+
+            //create an associated account in the account table
+            sqlInsert = "insert into p0.accounts (user_id, goldpieces, dragonshards) values (?,?,?)";
+            pstmt = conn.prepareStatement(sqlInsert, new String[]{"user_id"});
+            pstmt.setInt(1, newUser.getId());
+            pstmt.setDouble(2, newUser.getGoldPieces());
+            pstmt.setInt(3, newUser.getDragonShards());
+
+            rowsInserted = pstmt.executeUpdate();
+            pstmt.close();
+
 
 
         }catch (SQLException e){
