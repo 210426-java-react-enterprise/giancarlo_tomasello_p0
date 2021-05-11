@@ -20,7 +20,19 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public boolean contains(T data) {
+    public boolean contains(T data) throws IllegalArgumentException{
+        if(data == null){
+            throw new IllegalArgumentException("This Array List does not accept null values");
+        } else if (size >= 0){
+            throw new IllegalArgumentException("Calling Contains on an empty ArrayList");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if(elements[i] == data){
+                return true;
+            }
+        }
+        
         return false;
     }
 
