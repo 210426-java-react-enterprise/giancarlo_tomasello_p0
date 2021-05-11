@@ -74,6 +74,7 @@ public class UserDAO {
         AppUser user = null;
         int account_id = 0;
         ArrayList<Integer> item_ids= new ArrayList<>();
+        ArrayList<Item> userItems = new ArrayList<>();
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()){
             String sql = "select * from p0.users where username = ? and password = ?";
@@ -120,7 +121,6 @@ public class UserDAO {
                 while (rs.next()){
                     int item_id = rs.getInt("item_id");
                     item_ids.add(item_id);
-                    System.out.println(item_id);
                 }
             }
 
@@ -139,8 +139,9 @@ public class UserDAO {
                     temp.setRarity(rs.getString("rarity"));
                     temp.setValue(rs.getDouble("value"));
 
-                    System.out.println(temp.toString());
+                   userItems.add(temp);
                 }
+                
             }
 
 
