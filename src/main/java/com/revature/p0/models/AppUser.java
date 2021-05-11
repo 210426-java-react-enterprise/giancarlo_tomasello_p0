@@ -15,6 +15,7 @@ public class AppUser {
 
     public AppUser(){
 
+        backpack = new ArrayList<>();
     }
 
     public AppUser(String username, String password, String email, String firstName, String lastName, double goldPieces,
