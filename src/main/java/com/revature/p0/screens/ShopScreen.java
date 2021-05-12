@@ -1,6 +1,7 @@
 package com.revature.p0.screens;
 
 import com.revature.p0.daos.UserDAO;
+import com.revature.p0.models.AppUser;
 import com.revature.p0.models.Item;
 import com.revature.p0.util.ArrayList;
 import com.revature.p0.util.ScreenRouter;
@@ -31,12 +32,12 @@ public class ShopScreen extends Screen{
 
         printStoreItems();
 
-        System.out.println("Would you like to:");
-        System.out.println("1) Purchase an Item");
-        System.out.println("2) See the items again");
-        System.out.println("3) Leave the store");
+        while (leaveStore == false) {
+            System.out.println("Would you like to:");
+            System.out.println("1) Purchase an Item");
+            System.out.println("2) See the items again");
+            System.out.println("3) Leave the store");
 
-        while (leaveStore = false) {
             try {
                 System.out.print("->");
                 String userSelection = consoleReader.readLine();
@@ -62,22 +63,45 @@ public class ShopScreen extends Screen{
             }
         }
 
+        System.out.println("Leaving the store now!");
 
     }
 
     public void printStoreItems(){
+        System.out.println("+---------------+");
         for (int i = 0; i < shopItems.size(); i++) {
             Item item = shopItems.get(i);
             System.out.printf("%s | %s | Rarity: %s | Cost: %s\n", item.getName(), item.getDescription(), item.getRarity(), item.getValue());
         }
-
+        System.out.println("+---------------+");
     }
 
     public void buyAnItem(){
+        AppUser currentUser = router.getUser();
+        Item boughtItem = new Item();
+
         System.out.println("Please input 1, 2, or 3 to buy the corresponding item");
-        //Check funds
-            //If it won't create an overcharge subtract
-            //Else return
-        //Add Item to backpack and database;
+        try {
+            System.out.print("->");
+            String userSelection = consoleReader.readLine();
+            boughtItem = shopItems.get(Integer.parseInt(userSelection)-1);
+
+            System.out.println(boughtItem.toString());
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        //CheckOverage() in userService
+        double newValue = currentUser.getGoldPieces()-boughtItem.getValue();
+        if(newValue >= 0){
+            currentUser.setGoldPieces(newValue);
+            System.out.printf("You bought an item for %.2f and now you have %.2f gold pieces.\n", boughtItem.getValue(), newValue);
+        } else {
+            System.out.println("I'm sorry but you don't have enough to buy that item");
+        }
+
+        currentUser.getBackpack().add(boughtItem);
+
     }
 }

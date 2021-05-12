@@ -74,15 +74,19 @@ public class ProfileScreen extends Screen{
                     case "5":
                         //Navigate to the shop screen
                         router.navigate("/Shop");
+                        System.out.println("New total: " + user.getGoldPieces());
                         break;
                     case "6":
                         exitScreen = true;
+                        break;
                     default:
                         System.out.println("My apologies, but I don't recognize that runic symbol");
                         exitScreen = true;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                System.out.println("Update the functions");
             }
         }
     }
