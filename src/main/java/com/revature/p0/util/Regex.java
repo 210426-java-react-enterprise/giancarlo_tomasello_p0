@@ -26,6 +26,17 @@ public enum Regex {
      */
     FIRSTNAME_PATTERN("^[^-\\s][a-zA-Z_\\s-]{2,25}+$"),
 
+    /* This it the pattern for lastname that can't start with a space, onlt allows letters, dashes, or underscores, and
+    must be between 2 and 26 characters.
+    */
+    LASTNAME_PATTERN("^[^-\\s][a-zA-Z_\\s-]{2,25}+$"),
+
+    /* This is the rules for email pattern:
+    * -must have an @ serperating the email into two parts name & domain
+    * -Can only contain num, letters, underscore, period, and - (no _ in domain)
+    * */
+    EMAIL_PATTERN("^[A-Za-z0-9+_.-]+@[a-zA_Z0-9.-]+$"),
+
     NONE ("");
 
     private String pattern;
