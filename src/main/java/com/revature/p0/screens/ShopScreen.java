@@ -17,12 +17,13 @@ public class ShopScreen extends Screen{
     private boolean leaveStore;
     ArrayList<Item> shopItems = new ArrayList<>();
 
-    public ShopScreen (BufferedReader consoleReader, ScreenRouter router, ArrayList<Item> shopItems){
+    public ShopScreen (BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO, ArrayList<Item> shopItems){
         super("ShopScreen", "/Shop");
         this.consoleReader = consoleReader;
         this.router = router;
         this.shopItems = shopItems;
         this.leaveStore = false;
+        this.userDAO = userDAO;
     }
 
     @Override
@@ -96,12 +97,14 @@ public class ShopScreen extends Screen{
         double newValue = currentUser.getGoldPieces()-boughtItem.getValue();
         if(newValue >= 0){
             currentUser.setGoldPieces(newValue);
+            userDAO.updateValueOfAccount("goldpieces", newValue, currentUser.getId(), -1);
             System.out.printf("You bought an item for %.2f and now you have %.2f gold pieces.\n", boughtItem.getValue(), newValue);
         } else {
             System.out.println("I'm sorry but you don't have enough to buy that item");
         }
 
         currentUser.getBackpack().add(boughtItem);
+        userDAO.addItemToDatabase(currentUser.getId(), boughtItem);
 
     }
 }

@@ -176,6 +176,7 @@ public class UserDAO {
 
     }
 
+
     public void updateValueOfAccount(String currencyType, double newValue, int userID, int accountID){
         try(Connection conn = ConnectionFactory.getInstance().getConnection()){
             String sql = "update p0.accounts set goldpieces = ? where user_id = ?"; //later add account_id ??
@@ -186,6 +187,34 @@ public class UserDAO {
 
             pstmt.executeUpdate();
             pstmt.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void addItemToDatabase(int user_id, Item itemToAdd){
+        int account_id = -1;
+        try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+           String sql = "select * from p0.accounts where user_id = ?";
+           PreparedStatement pstmt = conn.prepareStatement(sql);
+           pstmt.setInt(1, user_id);
+
+           ResultSet rs = pstmt.executeQuery();
+
+
+           if(rs.next()){
+               account_id = rs.getInt("account_id");
+           }
+
+           sql = "insert into p0.backpack (account_id, item_id) values (?, ?) ";
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setInt(1, account_id);
+           pstmt.setInt(2, itemToAdd.getId());
+
+           pstmt.executeUpdate();
+           pstmt.close();
+
         }catch (SQLException e){
             e.printStackTrace();
         }
