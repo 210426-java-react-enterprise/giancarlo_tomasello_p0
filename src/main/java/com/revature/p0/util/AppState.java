@@ -3,6 +3,8 @@ package com.revature.p0.util;
 import com.revature.p0.daos.UserDAO;
 import com.revature.p0.models.Item;
 import com.revature.p0.screens.*;
+import com.revature.p0.services.InputValidation;
+import com.revature.p0.services.UserService;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,6 +13,8 @@ public class AppState {
 
     private BufferedReader consoleReader;
     private ScreenRouter screenRouter;
+    private UserService userService;
+    private InputValidation validator;
     private boolean appRunning;
 
     public AppState(){
@@ -22,11 +26,13 @@ public class AppState {
 
         final UserDAO userDao = new UserDAO();
 
+        validator = new InputValidation();
+        userService = new UserService(userDao);
         ArrayList<Item> ShopsItems = userDao.randomizeShop();
 
         screenRouter = new ScreenRouter();
         screenRouter.addScreen(new WelcomeScreen(consoleReader, screenRouter))
-                .addScreen(new LoginScreen(consoleReader, screenRouter, userDao))
+                .addScreen(new LoginScreen(consoleReader, screenRouter, userService, validator))
                 .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao))
                 .addScreen(new ProfileScreen(consoleReader, screenRouter, userDao))
                 .addScreen(new MinigameScreen(consoleReader, screenRouter, userDao))

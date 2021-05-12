@@ -1,7 +1,10 @@
 package com.revature.p0.daos;
 
+
+import com.revature.p0.exceptions.UserNotFoundException;
 import com.revature.p0.models.AppUser;
 import com.revature.p0.models.Item;
+import com.revature.p0.services.UserService;
 import com.revature.p0.util.ArrayList;
 import com.revature.p0.util.ConnectionFactory;
 
@@ -13,8 +16,15 @@ import java.util.Random;
 
 public class UserDAO {
 
-    public UserDAO(){
+    private AppUser currentUser;
 
+    public AppUser getCurrentUser() {
+        return currentUser;
+    }
+
+
+    public void setCurrentUser(AppUser currentUser) {
+        this.currentUser = currentUser;
     }
 
     public void save(AppUser newUser){
@@ -70,14 +80,14 @@ public class UserDAO {
         System.out.println("Saved to database");
     }
 
-    public AppUser findUserByUsernameAndPassword(String username, String password){
+    public AppUser findUserByUsernameAndPassword(Connection conn, String username, String password)throws UserNotFoundException{
 
         AppUser user = null;
         int account_id = 0;
         ArrayList<Integer> item_ids= new ArrayList<>();
         ArrayList<Item> userItems = new ArrayList<>();
 
-        try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+        try{
             String sql = "select * from p0.users where username = ? and password = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
@@ -110,6 +120,8 @@ public class UserDAO {
                     account_id = rs.getInt("account_id");
                 }
 
+            } else {
+                throw new UserNotFoundException("Could not find User in Database");
             }
 
             if(account_id > 0){

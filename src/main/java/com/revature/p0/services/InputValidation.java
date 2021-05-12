@@ -10,12 +10,6 @@ import java.util.regex.Pattern;
 
 public class InputValidation {
 
-    private BufferedReader consoleReader;
-
-    public InputValidation(){
-
-    }
-
     public String testUserInput(String toBeChecked, Regex pattern, String ErrorMessage) throws IOException, UserInputException {
 
         Pattern p = Pattern.compile(pattern.getPattern());

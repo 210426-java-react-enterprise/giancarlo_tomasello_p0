@@ -39,7 +39,7 @@ public class InputValidationTest {
 
     @Test(expected = UserInputException.class)
     public void test_UsernameValidationFail(){
-        String input = "1111";
+        String input = "gtomase???";
 
         try {
             sut.testUserInput(input, Regex.USERNAME_PATTERN, "Error");
