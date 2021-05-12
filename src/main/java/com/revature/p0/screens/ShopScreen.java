@@ -20,6 +20,9 @@ public class ShopScreen extends Screen{
 
     @Override
     public void render() {
-        System.out.println("Welcome to Wally's Wares!");
+
+
+        System.out.println("Welcome to Wally's Wares! Today we have: ");
+
     }
 }

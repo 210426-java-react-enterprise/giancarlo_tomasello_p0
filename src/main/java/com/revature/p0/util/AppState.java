@@ -1,6 +1,7 @@
 package com.revature.p0.util;
 
 import com.revature.p0.daos.UserDAO;
+import com.revature.p0.models.Item;
 import com.revature.p0.screens.*;
 
 import java.io.BufferedReader;
@@ -18,7 +19,10 @@ public class AppState {
         this.appRunning = true;
         this.consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
+
         final UserDAO userDao = new UserDAO();
+
+        ArrayList<Item> ShopsItems = userDao.randomizeShop();
 
         screenRouter = new ScreenRouter();
         screenRouter.addScreen(new WelcomeScreen(consoleReader, screenRouter))
@@ -43,4 +47,5 @@ public class AppState {
     public ScreenRouter getScreenRouter(){
         return screenRouter;
     }
+
 }

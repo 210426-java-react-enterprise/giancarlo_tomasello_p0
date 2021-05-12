@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class UserDAO {
 
@@ -188,5 +189,39 @@ public class UserDAO {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Item> randomizeShop(){
+        ArrayList<Item> shopItems = new ArrayList<>();
+        Random rand = new Random();
+
+        try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+            for (int i = 0; i < 3; i++) {
+                String sql = "select * from p0.itemlist where item_id = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                int itemNum = rand.nextInt(5) + 1;
+                pstmt.setInt(1, itemNum);
+
+                ResultSet rs = pstmt.executeQuery();
+
+                rs = pstmt.executeQuery();
+
+                while (rs.next()){
+                    Item temp = new Item();
+                    temp.setId(rs.getInt("item_id"));
+                    temp.setName(rs.getString("name"));
+                    temp.setDescription(rs.getString("description"));
+                    temp.setRarity(rs.getString("rarity"));
+                    temp.setValue(rs.getDouble("value"));
+
+                    shopItems.add(temp);
+
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return shopItems;
     }
 }
