@@ -99,12 +99,14 @@ public class ShopScreen extends Screen{
             currentUser.setGoldPieces(newValue);
             userDAO.updateValueOfAccount("goldpieces", newValue, currentUser.getId(), -1);
             System.out.printf("You bought an item for %.2f and now you have %.2f gold pieces.\n", boughtItem.getValue(), newValue);
+
+            currentUser.getBackpack().add(boughtItem);
+            userDAO.addItemToDatabase(currentUser.getId(), boughtItem);
         } else {
             System.out.println("I'm sorry but you don't have enough to buy that item");
         }
 
-        currentUser.getBackpack().add(boughtItem);
-        userDAO.addItemToDatabase(currentUser.getId(), boughtItem);
+
 
     }
 }
