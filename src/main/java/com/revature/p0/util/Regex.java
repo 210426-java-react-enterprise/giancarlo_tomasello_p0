@@ -21,12 +21,12 @@ public enum Regex {
 
     PASSWORD_PATTERN("^(?=[a-zA-Z0-9#@$?_-]{4,50}$)(?=.*?[A-Z])(?=.*?[0-9]).*"),
 
-    /* This it the pattern for firstname that can't start with a space, onlt allows letters, dashes, or underscores, and
+    /* This it the pattern for firstname that can't start with a space, only allows letters, dashes, or underscores, and
     must be between 2 and 26 characters.
      */
     FIRSTNAME_PATTERN("^[^-\\s][a-zA-Z_\\s-]{2,25}+$"),
 
-    /* This it the pattern for lastname that can't start with a space, onlt allows letters, dashes, or underscores, and
+    /* This it the pattern for lastname that can't start with a space, only allows letters, dashes, or underscores, and
     must be between 2 and 26 characters.
     */
     LASTNAME_PATTERN("^[^-\\s][a-zA-Z_\\s-]{2,25}+$"),

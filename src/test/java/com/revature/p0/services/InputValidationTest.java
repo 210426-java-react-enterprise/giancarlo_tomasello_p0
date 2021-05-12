@@ -41,13 +41,92 @@ public class InputValidationTest {
     public void test_UsernameValidationFail(){
         String input = "1111";
 
-        String recieved = null;
         try {
-            recieved = sut.testUserInput(input, Regex.USERNAME_PATTERN, "Error");
+            sut.testUserInput(input, Regex.USERNAME_PATTERN, "Error");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
+    @Test
+    public void test_PasswordValidationSuccess(){
+        String input = "A1ys";
+
+
+        String recieved = null;
+        try {
+            recieved = sut.testUserInput(input, Regex.PASSWORD_PATTERN, "Error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertSame(input, recieved);
+    }
+
+    @Test(expected = UserInputException.class)
+    public void test_PasswordValidationFail(){
+        String input = "A1ys ";
+
+        try {
+            sut.testUserInput(input, Regex.PASSWORD_PATTERN, "Error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void test_FirstNameValidationSuccess(){
+        String input = "First Name";
+
+
+        String recieved = null;
+        try {
+            recieved = sut.testUserInput(input, Regex.FIRSTNAME_PATTERN, "Error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertSame(input, recieved);
+    }
+
+    @Test(expected = UserInputException.class)
+    public void test_FirstnameValidationFail(){
+        String input = "1111";
+
+        try {
+            sut.testUserInput(input, Regex.FIRSTNAME_PATTERN, "Error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void test_EmailValidationSuccess(){
+        String input = "hello@mail.com";
+
+
+        String recieved = null;
+        try {
+            recieved = sut.testUserInput(input, Regex.EMAIL_PATTERN, "Error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertSame(input, recieved);
+    }
+
+    @Test(expected = UserInputException.class)
+    public void test_EmailValidationFail(){
+        String input = "hello@mail;drop";
+
+        try {
+            sut.testUserInput(input, Regex.EMAIL_PATTERN, "Error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
