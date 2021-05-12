@@ -199,7 +199,7 @@ public class UserDAO {
             for (int i = 0; i < 3; i++) {
                 String sql = "select * from p0.itemlist where item_id = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
-                int itemNum = rand.nextInt(5) + 1;
+                int itemNum = rand.nextInt(5) + 2; //No 0 and no duplicate of adventure's license
                 pstmt.setInt(1, itemNum);
 
                 ResultSet rs = pstmt.executeQuery();
