@@ -16,9 +16,9 @@ public class InputValidation {
 
     }
 
-    public String testUserInput(String toBeChecked, Regex Pattern, String ErrorMessage) throws IOException, UserInputException {
+    public String testUserInput(String toBeChecked, Regex pattern, String ErrorMessage) throws IOException, UserInputException {
 
-        Pattern p = java.util.regex.Pattern.compile(Pattern.getPattern());
+        Pattern p = Pattern.compile(pattern.getPattern());
         Matcher m = p.matcher(toBeChecked);
 
         if(!m.find()){
