@@ -1,6 +1,6 @@
 package com.revature.p0.services;
 
-import com.revature.p0.UserInputException;
+import com.revature.p0.exceptions.UserInputException;
 import com.revature.p0.util.Regex;
 
 import java.io.BufferedReader;
