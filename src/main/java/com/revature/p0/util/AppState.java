@@ -25,7 +25,8 @@ public class AppState {
                 .addScreen(new LoginScreen(consoleReader, screenRouter, userDao))
                 .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao))
                 .addScreen(new ProfileScreen(consoleReader, screenRouter, userDao))
-                .addScreen(new MinigameScreen(consoleReader, screenRouter, userDao));
+                .addScreen(new MinigameScreen(consoleReader, screenRouter, userDao))
+                .addScreen(new ShopScreen(consoleReader, screenRouter, userDao));
 
         System.out.println("Initialized app and prepared NPCs");
 

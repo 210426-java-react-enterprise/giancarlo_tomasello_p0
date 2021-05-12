@@ -73,6 +73,7 @@ public class ProfileScreen extends Screen{
                         break;
                     case "5":
                         //Navigate to the shop screen
+                        router.navigate("/Shop");
                         break;
                     case "6":
                         exitScreen = true;
