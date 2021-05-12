@@ -56,12 +56,12 @@ public class ProfileScreen extends Screen{
 
                 switch (userSelection) {
                     case "1":
+                        //Print out the value of the user's account
                         setUser(router.getUser());
                         userDAO.printValueOfAccount(user);
-                        //print out gold totals
                         break;
                     case "2":
-                        //Display corresponding items from item table
+                        //Display the items that belong to the user's account
                         printBackpackArray();
                         break;
                     case "3":
@@ -72,7 +72,7 @@ public class ProfileScreen extends Screen{
                         router.navigate("/Minigame");
                         break;
                     case "5":
-                        //shop
+                        //Navigate to the shop screen
                         break;
                     case "6":
                         exitScreen = true;
