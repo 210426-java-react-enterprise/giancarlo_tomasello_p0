@@ -12,15 +12,13 @@ import java.io.IOException;
 public class ShopScreen extends Screen{
 
     private BufferedReader consoleReader;
-    private ScreenRouter router;
     private UserDAO userDAO;
     private boolean leaveStore;
     ArrayList<Item> shopItems = new ArrayList<>();
 
-    public ShopScreen (BufferedReader consoleReader, ScreenRouter router, UserDAO userDAO, ArrayList<Item> shopItems){
+    public ShopScreen (BufferedReader consoleReader, UserDAO userDAO, ArrayList<Item> shopItems){
         super("ShopScreen", "/Shop");
         this.consoleReader = consoleReader;
-        this.router = router;
         this.shopItems = shopItems;
         this.leaveStore = false;
         this.userDAO = userDAO;
@@ -78,7 +76,7 @@ public class ShopScreen extends Screen{
     }
 
     public void buyAnItem(){
-        AppUser currentUser = router.getUser();
+        AppUser currentUser = userDAO.getCurrentUser();
         Item boughtItem = new Item();
 
         System.out.println("Please input 1, 2, or 3 to buy the corresponding item");

@@ -57,7 +57,6 @@ public class ProfileScreen extends Screen{
                 switch (userSelection) {
                     case "1":
                         //Print out the value of the user's account
-                        setUser(router.getUser());
                         userDAO.printValueOfAccount(user);
                         break;
                     case "2":
@@ -89,24 +88,6 @@ public class ProfileScreen extends Screen{
                 System.out.println("Update the functions");
             }
         }
-    }
-
-    public void printValueOfAccount(){
-        try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
-            String sql = "select goldpieces, dragonshards from p0.users where user_id = ?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, user.getId());
-
-            ResultSet rs = pstmt.executeQuery();
-
-            while(rs.next()){
-                System.out.println("You still have " + rs.getDouble("goldpieces") + " gold pieces and " +
-                        rs.getInt("dragonshards") + " Dragon Shards in your account.");
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
     }
 
     public void printBackpackArray(){
