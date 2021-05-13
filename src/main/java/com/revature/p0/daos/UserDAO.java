@@ -27,9 +27,9 @@ public class UserDAO {
         this.currentUser = currentUser;
     }
 
-    public void save(AppUser newUser){
+    public void save(Connection conn, AppUser newUser){
 
-        try(Connection conn = ConnectionFactory.getInstance().getConnection()){
+        try{
             //Insert into users table
             String sqlInsert = "insert into p0.users (username, password, email, first_name, last_name) " +
                     "values (?,?,?,?,?)";

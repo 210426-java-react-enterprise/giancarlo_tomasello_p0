@@ -33,7 +33,7 @@ public class UserService {
                 throw new EmailUnavailableException("Email already exitst in the database");
             }
 
-            System.out.println("ready to add to data base");
+            userDAO.save(conn, newUser);
 
         } catch (SQLException e){
             e.printStackTrace();
