@@ -17,7 +17,7 @@ public class UserService {
     }
 
     public void register(AppUser newUser){
-
+        System.out.println("register the new user");
     }
 
     public void findUserInDatabase(String username, String password){

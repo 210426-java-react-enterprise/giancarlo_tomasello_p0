@@ -37,7 +37,7 @@ public class ProfileScreen extends Screen{
     @Override
     public void render() {
         exitScreen = false;
-        setUser(router.getUser());
+        setUser(userDAO.getCurrentUser());
         System.out.println(user.getBackpack().size());
 
         System.out.println("Welcome back " + user.getFirstName() + " " + user.getLastName() + "!");

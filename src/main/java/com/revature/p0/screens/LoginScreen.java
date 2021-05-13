@@ -56,6 +56,7 @@ public class LoginScreen extends Screen{
 
             //Using the UserService establish a connection and find the user in db
             userService.findUserInDatabase(username, password);
+            router.navigate("/Profile");
 
 
 //            if(username != null && !username.isEmpty() && password != null && !password.isEmpty()){

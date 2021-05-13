@@ -24,4 +24,10 @@ public class InputValidation {
         System.out.println("Pattern is succesful.");
         return toBeChecked;
     }
+
+    public void testMoneyInput(double value)throws UserInputException {
+        if(value < 0){
+            throw new UserInputException("Can't input a negative value for account");
+        }
+    }
 }

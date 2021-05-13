@@ -33,7 +33,7 @@ public class AppState {
         screenRouter = new ScreenRouter();
         screenRouter.addScreen(new WelcomeScreen(consoleReader, screenRouter))
                 .addScreen(new LoginScreen(consoleReader, screenRouter, userService, validator))
-                .addScreen(new RegisterScreen(consoleReader, screenRouter,userDao))
+                .addScreen(new RegisterScreen(consoleReader, screenRouter,userService, validator))
                 .addScreen(new ProfileScreen(consoleReader, screenRouter, userDao))
                 .addScreen(new MinigameScreen(consoleReader, screenRouter, userDao))
                 .addScreen(new ShopScreen(consoleReader, screenRouter, userDao, ShopsItems));
