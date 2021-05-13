@@ -44,7 +44,7 @@ public class ProfileScreen extends Screen{
         System.out.println("How can we Help you today?");
         System.out.println("1) I want to see how much treasure I have");
         System.out.println("2) I want to see all my items");
-        System.out.println("3) I want to hear about by past adventures");
+        System.out.println("3) I want to hear about by future adventures");
         System.out.println("4) I wanna go find more gold");
         System.out.println("5) I wanna go to the shop");
         System.out.println("6) I'm done for the day");
@@ -65,6 +65,7 @@ public class ProfileScreen extends Screen{
                         break;
                     case "3":
                         //Display previous transactions
+                        System.out.println("You will will travel to many new lands meeting new friends along the way");
                         break;
                     case "4":
                         //Navigate to minigame screen
