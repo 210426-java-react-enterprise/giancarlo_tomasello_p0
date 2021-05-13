@@ -10,12 +10,23 @@ public class ArrayList<T> implements List<T>{
     private T[] elements  = (T[])new Object[10];
 
 
-
+    /**
+     * Returns and int that represents the size of the ArrayList
+     * @return size
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Returns true if the ArrayList contains the specified value
+     * Does not accept null values and throws an exception if called on an empty ArrayList
+     *
+     * @param data The item you are looking for in the ArrayList
+     * @return bool True if it contains the data
+     * @throws IllegalArgumentException Called when null data is used or if called on empty ArrayList
+     */
     @Override
     public boolean contains(T data) throws IllegalArgumentException{
         if(data == null){
@@ -33,6 +44,11 @@ public class ArrayList<T> implements List<T>{
         return false;
     }
 
+    /**
+     * Adds new data to the end of the ArrayList. Does not accept null data and will throw an exception
+     * @param data The desired object to add to the ArrayList
+     * @throws IllegalArgumentException The exception called when null data is used
+     */
     @Override
     public void add(T data) throws IllegalArgumentException{
 
@@ -52,12 +68,21 @@ public class ArrayList<T> implements List<T>{
         }
     }
 
-    //Remove data
+    /**
+     * Finds, returns, and removes the specified object from the ArrayList, if data not found return null.
+     * @param data The object that is to be removed from the list
+     * @return data The object that was removed. Wil be null if data not found
+     * @throws IllegalArgumentException Throws an exception when trying to remove null data from the ArrayList
+     */
     @Override
     public T remove(T data) throws IllegalArgumentException{
 
         if(data == null){
             throw new IllegalArgumentException("This Array List does not accept null values");
+        }
+
+        if(!contains(data)){
+            return null;
         }
 
         int emptyIndex = -1;
@@ -82,6 +107,13 @@ public class ArrayList<T> implements List<T>{
         return data;
     }
 
+    /**
+     * Deletes data at specified index. If index is out of bounds throw an error
+     *
+     * @param index The postion of the object to be removed
+     * @return bool Returns true if the object was successfully removed
+     * @throws IllegalArgumentException Returns an exception when out of bounds data used
+     */
     public boolean remove(int index) throws IllegalArgumentException{
         if(index < 0 || index >= size){
             throw new IllegalArgumentException("This provided index would be out of bounds");
@@ -94,6 +126,12 @@ public class ArrayList<T> implements List<T>{
         return true;
     }
 
+    /**
+     * Get and return data at a specific index, throws an exception when out of bounds
+     * @param index The position that you want to remove data from
+     * @return data Return the data at the specified position
+     * @throws IllegalArgumentException Throws this exception when index is out of bounds
+     */
     @Override
     public T get(int index) throws IllegalArgumentException {
         if(index < 0 || index >= size){
