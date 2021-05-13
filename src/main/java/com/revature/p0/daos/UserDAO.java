@@ -265,4 +265,42 @@ public class UserDAO {
 
         return shopItems;
     }
+
+    public boolean isUsernameAvailable(Connection conn, String username){
+
+        try {
+            String sql = "select * from p0.users where username = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if(rs.next()){
+                return false;
+            } else{
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean isEmailAvailable(Connection conn, String email){
+        try {
+            String sql = "select * from p0.users where email = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            if(rs.next()){
+                return false;
+            } else{
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
