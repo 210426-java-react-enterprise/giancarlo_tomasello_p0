@@ -19,6 +19,12 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
+    /**
+     * Take a newUser to check if it can be added to the database using helper methods. If true it calls
+     * the userDao to add the newUser to teh database.
+     * @param newUser The new user that wants to be added to the database
+     * @throws ResourcePersistenceException Thrown when the newUser would create a duplciate username of email
+     */
     public void register(AppUser newUser) throws ResourcePersistenceException {
         System.out.println("register the new user");
 
@@ -43,6 +49,12 @@ public class UserService {
         //save
     }
 
+    /**
+     * Uses the userDao to check if the user exists in the database. If it does exist
+     * set the current user for the program
+     * @param username The username of the user you are looking for
+     * @param password The password for the user you are looking for
+     */
     public void findUserInDatabase(String username, String password){
         try (Connection conn = ConnectionFactory.getInstance().getConnection()){
             AppUser foundUser = userDAO.findUserByUsernameAndPassword(conn, username, password);
