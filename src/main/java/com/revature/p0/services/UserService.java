@@ -45,7 +45,8 @@ public class UserService {
 
     public void findUserInDatabase(String username, String password){
         try (Connection conn = ConnectionFactory.getInstance().getConnection()){
-            userDAO.setCurrentUser(userDAO.findUserByUsernameAndPassword(conn, username, password));
+            AppUser foundUser = userDAO.findUserByUsernameAndPassword(conn, username, password);
+            userDAO.setCurrentUser(foundUser);
         } catch (SQLException e){
             e.printStackTrace();
         } catch (UserNotFoundException e){
@@ -54,12 +55,4 @@ public class UserService {
         }
     }
 
-    //Set up connections? for userDao
-    //Register and Login
-
-
-    //boolean validateUsername (username, password)
-
-
-    //validateRegister (AppUser)
 }

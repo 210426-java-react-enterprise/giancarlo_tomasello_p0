@@ -18,6 +18,11 @@ public class AppUser {
         backpack = new ArrayList<>();
     }
 
+    public AppUser(int id, String username, String password, String email, String firstName, String lastName, double goldPieces, int dragonShards) {
+        this(username, password, email, firstName, lastName, goldPieces, dragonShards, new ArrayList<>());
+        Id = id;
+    }
+
     public AppUser(String username, String password, String email, String firstName, String lastName, double goldPieces,
                    int dragonShards, ArrayList<Item> backpack) {
         Username = username;
