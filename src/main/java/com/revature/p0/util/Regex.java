@@ -1,5 +1,11 @@
 package com.revature.p0.util;
 
+
+/**
+ * An enum that holds the values of regex patterns that are used
+ * to varrify user input to desired rules. The rules for each pattern
+ * are specified in the .java file
+ */
 public enum Regex {
 
     /*Rules:
