@@ -42,14 +42,27 @@ public class AppState {
 
     }
 
+    /**
+     * Returns a bool that states whether or not the app is still running
+     *
+     * @return bool
+     */
     public boolean isAppRunning(){
         return appRunning;
     }
 
+    /**
+     * Takes in a boolean to set if the app is running
+     * @param appRunning A boolean stating if the app is running or not
+     */
     public void setAppRunning(boolean appRunning){
         this.appRunning = appRunning;
     }
 
+    /**
+     * Returns the screen router object to be used in screen navigation
+     * @return screenRouter A linkedList holding all the screens
+     */
     public ScreenRouter getScreenRouter(){
         return screenRouter;
     }
